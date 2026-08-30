@@ -1,75 +1,61 @@
-# React + TypeScript + Vite
+# Dhanush Siddamsetty — Full Stack Developer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio showcasing my experience, projects, technical skills, certifications, and education.
 
-Currently, two official plugins are available:
+## About
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+I'm a Full Stack Developer with professional experience building and maintaining production web applications, backend services, REST APIs, CMS platforms, automation solutions, and third-party integrations.
 
-## React Compiler
+### Core Technologies
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* PHP
+* Laravel
+* Python
+* Django
+* React
+* Node.js
+* MySQL
+* PostgreSQL
+* REST APIs
+* Git
+* Docker
+* AI / LLM Integrations
 
-## Expanding the ESLint configuration
+## Featured Projects
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### AI Chat Bot
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+AI-powered conversational application built with Laravel, React, Inertia.js and LLM technologies.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### AI Creator Studio
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+AI-powered application focused on content creation and automation workflows.
 
-```
+## Experience
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**Full Stack Developer — The Dragon Year (72 Dragons)**
+2023 — 2026 · India / Remote
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Developed and maintained production web applications, CMS platforms, backend services and RESTful APIs using PHP, Laravel, Python, Django, Node.js and React. Worked on automation, third-party API integrations, database optimization and production systems.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Education
 
-```
+**Master's Degree — Artificial Intelligence & Machine Learning**
+Lovely Professional University
+
+## Certifications
+
+* Service Hub Software Certification — HubSpot
+* SQL (Intermediate) — HackerRank
+* Problem Solving (Intermediate) — HackerRank
+* Solutions Architecture Virtual Experience Program — Amazon
+* Technology Virtual Experience Program — Deloitte
+* Developer Virtual Experience Program — Accenture Nordics
+
+## Portfolio
+
+🌐 **https://dhanushsiddamsetty.pages.dev**
+
+## Contact
+
+If you'd like to discuss a project, opportunity, or collaboration, feel free to connect with me through my portfolio or LinkedIn.
