@@ -34,6 +34,15 @@ export default function Footer() {
             <ArrowUpRight size={14} />
           </a>
 
+          <a
+            href="https://www.hackerrank.com/profile/dhanushsiddamse1"
+            target="_blank"
+            rel="noreferrer"
+          >
+            HackerRank
+            <ArrowUpRight size={14} />
+          </a>
+
           <a href="#contact">
             Contact
             <ArrowUpRight size={14} />

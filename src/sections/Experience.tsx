@@ -21,8 +21,6 @@ const experiences = [
       "Git",
       "Linux",
       "REST APIs",
-      "OpenAI",
-      "LangChain",
     ],
   },
   {

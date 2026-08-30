@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { SiHackerrank } from "react-icons/si";
 
 export default function Hero() {
   return (
@@ -47,8 +49,8 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35 }}
           >
-            I build scalable web applications, AI-powered solutions,
-            REST APIs and automation systems that solve real-world problems.
+            I build scalable web applications, AI-powered solutions, REST APIs
+            and automation systems that solve real-world problems.
           </motion.p>
 
           <motion.div
@@ -67,6 +69,7 @@ export default function Hero() {
             </a>
           </motion.div>
 
+          {/* Social links */}
           <motion.div
             className="hero-socials"
             initial={{ opacity: 0 }}
@@ -79,7 +82,7 @@ export default function Hero() {
               rel="noreferrer"
               aria-label="GitHub"
             >
-              GH
+              <FaGithub size={19} />
             </a>
 
             <a
@@ -88,7 +91,16 @@ export default function Hero() {
               rel="noreferrer"
               aria-label="LinkedIn"
             >
-              in
+              <FaLinkedinIn size={19} />
+            </a>
+
+            <a
+              href="https://www.hackerrank.com/profile/dhanushsiddamse1"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="HackerRank"
+            >
+              <SiHackerrank size={19} />
             </a>
           </motion.div>
         </div>

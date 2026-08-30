@@ -15,8 +15,10 @@ export default function Contact() {
     const form = event.currentTarget;
     const formData = new FormData(form);
 
+    formData.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
+
     try {
-      const response = await fetch("/api/contact.php", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: formData,
       });
@@ -66,7 +68,10 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <a href="mailto:dhanushsiddamsetty@gmail.com" className="contact-detail">
+            <a
+              href="mailto:dhanushsiddamsetty@gmail.com"
+              className="contact-detail"
+            >
               <span className="contact-detail-icon">
                 <Mail size={19} />
               </span>
