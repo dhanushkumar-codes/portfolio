@@ -1,25 +1,28 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Code2, Brain, Server } from "lucide-react";
-
-const highlights = [
-  {
-    icon: Code2,
-    title: "Full Stack",
-    description: "Modern web applications from frontend to backend.",
-  },
-  {
-    icon: Brain,
-    title: "AI & LLM",
-    description: "AI-powered features, chatbots and intelligent workflows.",
-  },
-  {
-    icon: Server,
-    title: "APIs & Systems",
-    description: "REST APIs, integrations, automation and server-side systems.",
-  },
-];
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function About() {
+  const { t } = useLanguage();
+
+  const highlights = [
+    {
+      icon: Code2,
+      title: t.about.highlights.fullStack.title,
+      description: t.about.highlights.fullStack.description,
+    },
+    {
+      icon: Brain,
+      title: t.about.highlights.ai.title,
+      description: t.about.highlights.ai.description,
+    },
+    {
+      icon: Server,
+      title: t.about.highlights.apis.title,
+      description: t.about.highlights.apis.description,
+    },
+  ];
+
   return (
     <section id="about" className="about-section">
       <div className="section-container">
@@ -30,12 +33,12 @@ export default function About() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-label">01 — ABOUT ME</span>
+          <span className="section-label">{t.about.label}</span>
 
           <h2>
-            Building software
+            {t.about.titleFirst}
             <br />
-            <span>with purpose.</span>
+            <span>{t.about.titleSecond}</span>
           </h2>
         </motion.div>
 
@@ -47,25 +50,14 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <p className="about-lead">
-              I'm a Full Stack Developer with a strong interest in AI,
-              automation and building products that solve real problems.
-            </p>
+            <p className="about-lead">{t.about.lead}</p>
 
-            <p>
-              I work across the stack, from designing responsive interfaces
-              with React to building backend systems, REST APIs and
-              integrations using PHP, Laravel, Python and Django.
-            </p>
+            <p>{t.about.paragraphOne}</p>
 
-            <p>
-              I'm particularly interested in combining traditional software
-              engineering with AI and LLM technologies to create smarter,
-              more useful applications.
-            </p>
+            <p>{t.about.paragraphTwo}</p>
 
             <a href="#experience" className="text-link">
-              Explore my experience
+              {t.about.exploreExperience}
               <ArrowUpRight size={17} />
             </a>
           </motion.div>
@@ -109,22 +101,22 @@ export default function About() {
         >
           <div>
             <strong>3+</strong>
-            <span>Years Experience</span>
+            <span>{t.about.stats.years}</span>
           </div>
 
           <div>
             <strong>AI</strong>
-            <span>AI & LLM Solutions</span>
+            <span>{t.about.stats.ai}</span>
           </div>
 
           <div>
             <strong>Full Stack</strong>
-            <span>Frontend to Backend</span>
+            <span>{t.about.stats.fullStack}</span>
           </div>
 
           <div>
             <strong>APIs</strong>
-            <span>Integrations & Automation</span>
+            <span>{t.about.stats.apis}</span>
           </div>
         </motion.div>
       </div>

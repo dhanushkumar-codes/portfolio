@@ -2,8 +2,11 @@ import { motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { SiHackerrank } from "react-icons/si";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section className="hero">
       {/* Background effects */}
@@ -21,7 +24,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
           >
             <span className="status-dot" />
-            Available for opportunities
+            {t.hero.availability}
           </motion.div>
 
           <motion.p
@@ -30,7 +33,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            Hi, I'm Dhanush Kumar.
+            {t.hero.intro}
           </motion.p>
 
           <motion.h1
@@ -38,9 +41,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Full Stack
+            {t.hero.titleFirst}
             <br />
-            <span>& AI Developer.</span>
+            <span>{t.hero.titleSecond}</span>
           </motion.h1>
 
           <motion.p
@@ -49,8 +52,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35 }}
           >
-            I build scalable web applications, AI-powered solutions, REST APIs
-            and automation systems that solve real-world problems.
+            {t.hero.description}
           </motion.p>
 
           <motion.div
@@ -60,12 +62,12 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.5 }}
           >
             <a href="#projects" className="primary-button">
-              View my work
+              {t.hero.viewWork}
               <ArrowUpRight size={18} />
             </a>
 
             <a href="#contact" className="secondary-button">
-              Get in touch
+              {t.hero.getInTouch}
             </a>
           </motion.div>
 
@@ -121,19 +123,19 @@ export default function Hero() {
 
           <div className="floating-card card-top">
             <span>3+</span>
-            <small>Years Experience</small>
+            <small>{t.hero.yearsExperience}</small>
           </div>
 
           <div className="floating-card card-bottom">
             <span>AI</span>
-            <small>Building intelligent systems</small>
+            <small>{t.hero.buildingSystems}</small>
           </div>
         </motion.div>
       </div>
 
       {/* Scroll indicator */}
       <a href="#about" className="scroll-indicator">
-        <span>Scroll to explore</span>
+        <span>{t.hero.scroll}</span>
         <ArrowDown size={16} />
       </a>
     </section>

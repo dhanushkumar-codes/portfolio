@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const projects = [
   {
@@ -44,9 +45,11 @@ const projects = [
     featured: false,
     github: "https://github.com/dhanushkumar-codes/AI-Creator-Studio",
   },
-];
+] as const;
 
 export default function Projects() {
+  const { t } = useLanguage();
+
   return (
     <section id="projects" className="projects-section">
       <div className="section-container">
@@ -58,81 +61,82 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
         >
           <div>
-            <span className="section-label">03 — SELECTED WORK</span>
+            <span className="section-label">{t.projects.label}</span>
 
             <h2>
-              Things I've
+              {t.projects.headingFirst}
               <br />
-              <span>built.</span>
+              <span>{t.projects.headingSecond}</span>
             </h2>
           </div>
 
-          <p>
-            A selection of projects, applications and systems I've worked on
-            across full-stack development, AI and automation.
-          </p>
+          <p>{t.projects.description}</p>
         </motion.div>
 
         <div className="projects-list">
-          {projects.map((project, index) => (
-            <motion.article
-              className={`project-card ${
-                project.featured ? "project-featured" : ""
-              }`}
-              key={project.number}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.1,
-              }}
-            >
-              <div className="project-visual">
-                <div className="project-number">{project.number}</div>
+          {projects.map((project, index) => {
+            const projectTranslation = t.projects.items[project.number];
 
-                <div className="project-orbit orbit-one" />
-                <div className="project-orbit orbit-two" />
+            return (
+              <motion.article
+                className={`project-card ${
+                  project.featured ? "project-featured" : ""
+                }`}
+                key={project.number}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.1,
+                }}
+              >
+                <div className="project-visual">
+                  <div className="project-number">{project.number}</div>
 
-                <div className="project-preview">
-                  <span>{project.title}</span>
-                </div>
-              </div>
+                  <div className="project-orbit orbit-one" />
+                  <div className="project-orbit orbit-two" />
 
-              <div className="project-content">
-                <div className="project-meta">
-                  <span>{project.category}</span>
+                  <div className="project-preview">
+                    <span>{project.title}</span>
+                  </div>
                 </div>
 
-                <h3>{project.title}</h3>
+                <div className="project-content">
+                  <div className="project-meta">
+                    <span>{projectTranslation.category}</span>
+                  </div>
 
-                <p>{project.description}</p>
+                  <h3>{project.title}</h3>
 
-                <div className="project-technologies">
-                  {project.technologies.map((technology) => (
-                    <span key={technology}>{technology}</span>
-                  ))}
+                  <p>{projectTranslation.description}</p>
+
+                  <div className="project-technologies">
+                    {project.technologies.map((technology) => (
+                      <span key={technology}>{technology}</span>
+                    ))}
+                  </div>
+
+                  <div className="project-actions">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="project-link"
+                    >
+                      <span className="github-mark">GH</span>
+                      GitHub
+                    </a>
+
+                    <a href="#contact" className="project-link">
+                      {t.projects.viewDetails}
+                      <ArrowUpRight size={17} />
+                    </a>
+                  </div>
                 </div>
-
-                <div className="project-actions">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="project-link"
-                  >
-                    <span className="github-mark">GH</span>
-                    GitHub
-                  </a>
-
-                  <a href="#contact" className="project-link">
-                    View details
-                    <ArrowUpRight size={17} />
-                  </a>
-                </div>
-              </div>
-            </motion.article>
-          ))}
+              </motion.article>
+            );
+          })}
         </div>
 
         <motion.div
@@ -147,7 +151,7 @@ export default function Projects() {
             rel="noreferrer"
             className="all-projects-link"
           >
-            View more on GitHub
+            {t.projects.viewMore}
             <ArrowUpRight size={17} />
           </a>
         </motion.div>

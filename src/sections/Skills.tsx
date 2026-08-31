@@ -9,59 +9,54 @@ import {
   Server,
   Wrench,
 } from "lucide-react";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const skillGroups = [
   {
     icon: Code2,
-    title: "Languages",
-    description: "Core programming technologies I work with.",
+    key: "languages",
     skills: ["PHP", "Python", "JavaScript", "TypeScript", "HTML5", "CSS3"],
   },
   {
     icon: Layers,
-    title: "Frameworks",
-    description: "Frameworks and libraries for building applications.",
+    key: "frameworks",
     skills: ["Laravel", "React", "Django", "FastAPI", "Inertia.js", "Vite"],
   },
   {
     icon: Brain,
-    title: "AI & Automation",
-    description: "Building intelligent and automated solutions.",
+    key: "ai",
     skills: ["LLMs", "AI APIs", "AI Chatbots", "Prompt Engineering", "Automation"],
   },
   {
     icon: Database,
-    title: "Data",
-    description: "Working with application data and APIs.",
+    key: "data",
     skills: ["MySQL", "MariaDB", "REST APIs", "API Integration", "JSON"],
   },
   {
     icon: Server,
-    title: "Infrastructure",
-    description: "Development and server-side environments.",
+    key: "infrastructure",
     skills: ["Linux", "Apache", "Nginx", "Docker", "SSH", "Cloud"],
   },
   {
     icon: GitBranch,
-    title: "Development",
-    description: "Tools and practices I use every day.",
+    key: "development",
     skills: ["Git", "GitHub", "Postman", "Composer", "npm", "VS Code"],
   },
   {
     icon: Cloud,
-    title: "Cloud & CRM",
-    description: "Cloud services and business platforms.",
+    key: "cloud",
     skills: ["HubSpot", "CRM", "Workflows", "Integrations", "Google Cloud"],
   },
   {
     icon: Wrench,
-    title: "Engineering",
-    description: "Building maintainable production software.",
+    key: "engineering",
     skills: ["Authentication", "Webhooks", "Payments", "Testing", "Security"],
   },
-];
+] as const;
 
 export default function Skills() {
+  const { t } = useLanguage();
+
   return (
     <section id="skills" className="skills-section">
       <div className="section-container">
@@ -72,23 +67,24 @@ export default function Skills() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-label">02 — SKILLS</span>
+          <span className="section-label">{t.skills.label}</span>
 
           <h2>
-            Tools I use to
+            {t.skills.headingFirst}
             <br />
-            <span>build things.</span>
+            <span>{t.skills.headingSecond}</span>
           </h2>
         </motion.div>
 
         <div className="skills-grid">
           {skillGroups.map((group, index) => {
             const Icon = group.icon;
+            const content = t.skills.groups[group.key];
 
             return (
               <motion.article
                 className="skill-card"
-                key={group.title}
+                key={group.key}
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -107,9 +103,9 @@ export default function Skills() {
                   </span>
                 </div>
 
-                <h3>{group.title}</h3>
+                <h3>{content.title}</h3>
 
-                <p>{group.description}</p>
+                <p>{content.description}</p>
 
                 <div className="skill-tags">
                   {group.skills.map((skill) => (

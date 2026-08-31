@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Mail, MapPin, Send } from "lucide-react";
 import { useState } from "react";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Contact() {
+  const { t } = useLanguage();
+
   const [status, setStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");
@@ -15,7 +18,10 @@ export default function Contact() {
     const form = event.currentTarget;
     const formData = new FormData(form);
 
-    formData.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
+    formData.append(
+      "access_key",
+      import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
+    );
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -46,18 +52,15 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-label">06 — CONTACT</span>
+          <span className="section-label">{t.contact.label}</span>
 
           <h2>
-            Let's build
+            {t.contact.headingFirst}
             <br />
-            <span>something useful.</span>
+            <span>{t.contact.headingSecond}</span>
           </h2>
 
-          <p>
-            Have a project, opportunity or idea you'd like to discuss? Send me a
-            message and I'll get back to you.
-          </p>
+          <p>{t.contact.description}</p>
         </motion.div>
 
         <div className="contact-grid">
@@ -77,7 +80,7 @@ export default function Contact() {
               </span>
 
               <span>
-                <small>Email</small>
+                <small>{t.contact.emailLabel}</small>
                 dhanushsiddamsetty@gmail.com
               </span>
 
@@ -90,18 +93,15 @@ export default function Contact() {
               </span>
 
               <span>
-                <small>Location</small>
-                India · Open to remote opportunities
+                <small>{t.contact.locationLabel}</small>
+                {t.contact.location}
               </span>
             </div>
 
             <div className="contact-note">
               <span className="contact-note-dot" />
 
-              <p>
-                Currently open to Full Stack, Software Development and
-                AI-focused opportunities.
-              </p>
+              <p>{t.contact.availability}</p>
             </div>
           </motion.div>
 
@@ -115,42 +115,42 @@ export default function Contact() {
           >
             <div className="form-row">
               <label>
-                Name
+                {t.contact.form.name}
                 <input
                   type="text"
                   name="name"
-                  placeholder="Your name"
+                  placeholder={t.contact.form.namePlaceholder}
                   required
                 />
               </label>
 
               <label>
-                Email
+                {t.contact.form.email}
                 <input
                   type="email"
                   name="email"
-                  placeholder="you@example.com"
+                  placeholder={t.contact.form.emailPlaceholder}
                   required
                 />
               </label>
             </div>
 
             <label>
-              Subject
+              {t.contact.form.subject}
               <input
                 type="text"
                 name="subject"
-                placeholder="What would you like to discuss?"
+                placeholder={t.contact.form.subjectPlaceholder}
                 required
               />
             </label>
 
             <label>
-              Message
+              {t.contact.form.message}
               <textarea
                 name="message"
                 rows={6}
-                placeholder="Tell me a little about your project or opportunity..."
+                placeholder={t.contact.form.messagePlaceholder}
                 required
               />
             </label>
@@ -161,10 +161,10 @@ export default function Contact() {
               disabled={status === "sending"}
             >
               {status === "sending" ? (
-                "Sending..."
+                t.contact.form.sending
               ) : (
                 <>
-                  Send message
+                  {t.contact.form.send}
                   <Send size={16} />
                 </>
               )}
@@ -172,13 +172,13 @@ export default function Contact() {
 
             {status === "success" && (
               <p className="form-message success">
-                Thanks! Your message has been sent.
+                {t.contact.form.success}
               </p>
             )}
 
             {status === "error" && (
               <p className="form-message error">
-                Something went wrong. Please try again or email me directly.
+                {t.contact.form.error}
               </p>
             )}
           </motion.form>

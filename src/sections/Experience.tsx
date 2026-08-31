@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, BriefcaseBusiness } from "lucide-react";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const experiences = [
   {
@@ -40,7 +41,10 @@ const experiences = [
     ],
   },
 ];
+
 export default function Experience() {
+  const { t } = useLanguage();
+
   return (
     <section id="experience" className="experience-section">
       <div className="section-container">
@@ -51,60 +55,67 @@ export default function Experience() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-label">04 — EXPERIENCE</span>
+          <span className="section-label">{t.experience.label}</span>
 
           <h2>
-            Where I've
+            {t.experience.headingFirst}
             <br />
-            <span>worked.</span>
+            <span>{t.experience.headingSecond}</span>
           </h2>
         </motion.div>
 
         <div className="experience-list">
-          {experiences.map((experience, index) => (
-            <motion.article
-              className="experience-item"
-              key={`${experience.period}-${experience.role}`}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.1,
-              }}
-            >
-              <div className="experience-period">
-                <span>{experience.period}</span>
-              </div>
+          {experiences.map((experience, index) => {
+            const experienceTranslation =
+              t.experience.items[String(index) as "0" | "1"];
 
-              <div className="experience-marker">
-                <span />
-              </div>
-
-              <div className="experience-content">
-                <div className="experience-top">
-                  <div>
-                    <span className="experience-role">{experience.role}</span>
-
-                    <h3>{experience.company}</h3>
-                  </div>
-
-                  <div className="experience-location">
-                    <BriefcaseBusiness size={15} />
-                    {experience.location}
-                  </div>
+            return (
+              <motion.article
+                className="experience-item"
+                key={`${experience.period}-${experience.role}`}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.1,
+                }}
+              >
+                <div className="experience-period">
+                  <span>{experience.period}</span>
                 </div>
 
-                <p>{experience.description}</p>
-
-                <div className="experience-technologies">
-                  {experience.technologies.map((technology) => (
-                    <span key={technology}>{technology}</span>
-                  ))}
+                <div className="experience-marker">
+                  <span />
                 </div>
-              </div>
-            </motion.article>
-          ))}
+
+                <div className="experience-content">
+                  <div className="experience-top">
+                    <div>
+                      <span className="experience-role">
+                        {experienceTranslation.role}
+                      </span>
+
+                      <h3>{experience.company}</h3>
+                    </div>
+
+                    <div className="experience-location">
+                      <BriefcaseBusiness size={15} />
+                      {experience.location}
+                    </div>
+                  </div>
+
+                  <p>{experienceTranslation.description}</p>
+
+                  <div className="experience-technologies">
+                    {experience.technologies.map((technology) => (
+                      <span key={technology}>{technology}</span>
+                    ))}
+                  </div>
+                </div>
+              </motion.article>
+            );
+          })}
         </div>
 
         <motion.a
@@ -115,7 +126,7 @@ export default function Experience() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Interested in working together?
+          {t.experience.interested}
           <ArrowUpRight size={17} />
         </motion.a>
       </div>

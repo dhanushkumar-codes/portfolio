@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Award, GraduationCap, ExternalLink } from "lucide-react";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const certifications = [
   {
@@ -39,7 +40,10 @@ const certifications = [
     url: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Accenture%20Nordics/PxenP4rHNE6Bh4nQz_Accenture%20Nordics_gTGx4heMpfs5WADYy_1667644080737_completion_certificate.pdf",
   },
 ];
+
 export default function Education() {
+  const { t } = useLanguage();
+
   return (
     <section id="education" className="education-section">
       <div className="section-container">
@@ -50,12 +54,12 @@ export default function Education() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-label">05 — EDUCATION & CERTIFICATIONS</span>
+          <span className="section-label">{t.education.label}</span>
 
           <h2>
-            Always learning.
+            {t.education.headingFirst}
             <br />
-            <span>Always building.</span>
+            <span>{t.education.headingSecond}</span>
           </h2>
         </motion.div>
 
@@ -71,28 +75,31 @@ export default function Education() {
               <GraduationCap size={24} />
             </div>
 
-            <span className="education-label">MASTER'S DEGREE</span>
+            <span className="education-label">
+              {t.education.degreeLabel}
+            </span>
 
             <h3>
-              Artificial Intelligence
-              <br />& Machine Learning
+              {t.education.degreeTitleFirst}
+              <br />
+              {t.education.degreeTitleSecond}
             </h3>
 
-            <p>
-              Advanced study focused on artificial intelligence, machine
-              learning and modern software technologies.
-            </p>
+            <p>{t.education.degreeDescription}</p>
 
             <div className="education-meta">
-              <span>Lovely Professional University</span>
+              <span>{t.education.university}</span>
             </div>
           </motion.div>
 
           <div className="certifications">
             <div className="certifications-header">
               <div>
-                <span className="education-label">CERTIFICATIONS</span>
-                <h3>Professional learning</h3>
+                <span className="education-label">
+                  {t.education.certificationsLabel}
+                </span>
+
+                <h3>{t.education.certificationsTitle}</h3>
               </div>
 
               <Award size={22} />
@@ -129,9 +136,12 @@ export default function Education() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="certification-link"
-                    aria-label={`View ${certification.title} certificate`}
+                    aria-label={`${t.education.viewCertificate} ${certification.title}`}
                   >
-                    <ExternalLink size={15} className="certification-arrow" />
+                    <ExternalLink
+                      size={15}
+                      className="certification-arrow"
+                    />
                   </a>
                 </motion.div>
               ))}

@@ -1,6 +1,9 @@
 import { ArrowUpRight } from "lucide-react";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="footer">
       <div className="footer-main">
@@ -9,10 +12,7 @@ export default function Footer() {
             DK<span>.</span>
           </a>
 
-          <p>
-            Full Stack & AI Developer building web applications,
-            intelligent systems and useful digital products.
-          </p>
+          <p>{t.footer.description}</p>
         </div>
 
         <div className="footer-links">
@@ -44,16 +44,18 @@ export default function Footer() {
           </a>
 
           <a href="#contact">
-            Contact
+            {t.footer.contact}
             <ArrowUpRight size={14} />
           </a>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} Dhanush Kumar</span>
+        <span>
+          © {new Date().getFullYear()} Dhanush Kumar
+        </span>
 
-        <span>Built with React & TypeScript</span>
+        <span>{t.footer.builtWith}</span>
       </div>
     </footer>
   );
